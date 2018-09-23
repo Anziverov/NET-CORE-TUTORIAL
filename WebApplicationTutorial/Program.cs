@@ -16,7 +16,6 @@ namespace WebApplicationTutorial
     {
         public static void Main(string[] args)
         {
-            //BuildWebHost(args).Run();
             var host = BuildWebHost(args);
             using (var scope = host.Services.CreateScope())
             {
@@ -32,6 +31,7 @@ namespace WebApplicationTutorial
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
+            host.Run();
             #region another way to buil & run webhost
             //IWebHost host = new WebHostBuilder()
             //    .UseKestrel()
