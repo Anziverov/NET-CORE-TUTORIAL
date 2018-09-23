@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationTutorial.Models;
+using WebApplicationTutorial.Util;
 
 namespace WebApplicationTutorial.Controllers
 {
@@ -14,6 +15,28 @@ namespace WebApplicationTutorial.Controllers
         public HomeController(MobileContext context)
         {
             db = context;
+        }
+
+        #region partial view
+        public ActionResult GetMessage()
+        {
+            return PartialView("_GetMessage");
+        }
+        #endregion
+
+        public HtmlResult GetHtml()
+        {
+            return new HtmlResult("<h2>Привет ASP.NET Core</h2>");
+        }
+        public JsonResult GetUser()
+        {
+            User user = new User { Name = "Tom", Age = 29 };
+            return Json(user);
+        }
+        public IActionResult Square(int altitude, int height)
+        {
+            double square = altitude * height / 2;
+            return Content($"Площадь треугольника с основанием {altitude} и высотой {height} равна {square}");
         }
         public IActionResult ListOfPhones()
         {
