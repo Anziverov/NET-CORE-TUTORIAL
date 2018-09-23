@@ -35,15 +35,13 @@ namespace WebApplicationTutorial.Controllers
             return View();
         }
         [HttpPost]
-        public string Buy(Order order)
+        public IActionResult Buy(Order order)
         {
+            ViewBag.Order = order;
             db.Orders.Add(order);
-            if (order.Adress != null)
-            {
-                db.SaveChanges();
-                return "Thanks, " + order.User + '!';
-            }
-            else { return "Adress is: " + order.Adress; }
+             db.SaveChanges();
+            return View("Success");
+
         }
     }
 }
