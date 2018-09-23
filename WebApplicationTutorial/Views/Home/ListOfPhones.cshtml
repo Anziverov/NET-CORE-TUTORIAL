@@ -6,18 +6,17 @@
 <table >
     <tr>
         <td>Model</td>
-        <td>Company</td>
+        <td style="padding:15px;">Company</td>
         <td>Price</td>
     </tr>
-    <tr>
         @foreach (var phone in Model)
-        {
-            <td>@phone.Name</td>
-            <td>@phone.Company</td>
-            <td>@phone.Price</td>
-            <td><a href="~/Home/Buy/@phone.Id">Buy</a></td>
-
+        {   
+            <tr>
+                <td>@phone.Name</td>
+                <td style="padding:15px;">@phone.Company</td>
+                <td>@phone.Price</td>
+                <td><a href="~/Home/Buy/@phone.Id">Buy</a></td>
+            </tr>
         }
-    </tr>
 </table>
 

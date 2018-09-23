@@ -28,5 +28,22 @@ namespace WebApplicationTutorial.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [HttpGet]
+        public IActionResult Buy(int id)
+        {
+            ViewBag.PhoneId = id;
+            return View();
+        }
+        [HttpPost]
+        public string Buy(Order order)
+        {
+            db.Orders.Add(order);
+            if (order.Adress != null)
+            {
+                db.SaveChanges();
+                return "Thanks, " + order.User + '!';
+            }
+            else { return "Adress is: " + order.Adress; }
+        }
     }
 }

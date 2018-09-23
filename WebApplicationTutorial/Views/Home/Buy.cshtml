@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Buy";
+}
+
+<div>
+    <h3>Ordering</h3>
+    <p>Fill the form</p>
+    <form method="post">
+        <input type="hidden" value="@ViewBag.PhoneId" name="PhoneId" />
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="User" /></td>
+            </tr>
+            <tr>
+                <td>Adress:</td>
+                <td><input type="text" name="Adress" /></td>
+            </tr>
+            <tr>
+                <td>Contact Phone:</td>
+                <td><input type="tel" name="ContactPhone" placeholder="+375256132853"  maxlength="13"/></td>
+            </tr>
+            <tr><td><input type="submit" value="Send" /></td></tr>
+        </table>
+    </form>
+</div>
+
