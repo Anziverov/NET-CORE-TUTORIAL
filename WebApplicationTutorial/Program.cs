@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WebApplicationTutorial.Models;
 
 namespace WebApplicationTutorial
 {
@@ -14,8 +16,22 @@ namespace WebApplicationTutorial
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
-
+            //BuildWebHost(args).Run();
+            var host = BuildWebHost(args);
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<MobileContext>();
+                    SampleData.Initialize(context);
+                }
+                catch(Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                }
+            }
             #region another way to buil & run webhost
             //IWebHost host = new WebHostBuilder()
             //    .UseKestrel()
