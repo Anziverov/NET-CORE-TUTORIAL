@@ -6,23 +6,25 @@
 <div>
     <h3>Ordering</h3>
     <p>Fill the form</p>
-    <form method="post">
+    <form method="post" class="form-horizontal" role="form">
         <input type="hidden" value="@ViewBag.PhoneId" name="PhoneId" />
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td><input type="text" name="User" /></td>
-            </tr>
-            <tr>
-                <td>Adress:</td>
-                <td><input type="text" name="Adress" /></td>
-            </tr>
-            <tr>
-                <td>Contact Phone:</td>
-                <td><input type="tel" name="ContactPhone" placeholder="+375256132853"  maxlength="13"/></td>
-            </tr>
-            <tr><td><input type="submit" value="Send" /></td></tr>
-        </table>
+        <div class="form-group">
+            <label for="User" class="col-md-2 control-label">Name:</label>
+            <div class="col-md-4"><input type="text" name="User" class="form-control" /></div>
+        </div>
+        <div class="form-group">
+            <label for="Adress" class="col-md-2 control-label">Address:</label>
+            <div class="col-md-4"><input type="text" name="Adress" class="form-control" /></div>
+        </div>
+        <div class="form-group">
+            <label for="ContactPhone" class="col-md-2 control-label">Phone:</label>
+            <div class="col-md-4"><input type="tel" name="User" placeholder="+375256132853" maxlength="13" class="form-control" /></div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Отправить" />
+            </div>
+            </div>            
     </form>
 </div>
 

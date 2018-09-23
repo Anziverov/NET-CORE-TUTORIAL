@@ -3,17 +3,17 @@
     ViewData["Title"] = "ListOfPhones";
 }
 <h3>Phones</h3>
-<table >
+<table  class="table-condensed">
     <tr>
         <td>Model</td>
-        <td style="padding:15px;">Company</td>
+        <td>Company</td>
         <td>Price</td>
     </tr>
         @foreach (var phone in Model)
         {   
             <tr>
                 <td>@phone.Name</td>
-                <td style="padding:15px;">@phone.Company</td>
+                <td>@phone.Company</td>
                 <td>@phone.Price</td>
                 <td><a href="~/Home/Buy/@phone.Id">Buy</a></td>
             </tr>
